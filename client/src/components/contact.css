@@ -1,0 +1,23 @@
+.contact-subtitle {
+  @apply text-center text-gray-400 text-lg mb-10;
+}
+.form-wrap {
+  @apply flex flex-col gap-4 max-w-lg mx-auto;
+}
+.input-field {
+  @apply bg-slate-800 border border-slate-700 rounded-xl
+         px-4 py-3 text-white placeholder-slate-500
+         outline-none focus:border-cyan-400/50
+         text-base w-full transition-all duration-200;
+}
+.send-btn {
+  @apply w-full py-3 rounded-xl font-semibold text-cyan-400
+         bg-cyan-400/10 border border-cyan-400/30
+         hover:bg-cyan-400/20 transition-all duration-300;
+}
+.links-row {
+  @apply flex justify-center gap-4 mt-2;
+}
+.highlight {
+  @apply text-cyan-400;
+}

@@ -1,0 +1,4 @@
+.btn {
+   @apply  border-cyan-400 text-cyan-400 hover:bg-cyan-400 
+            hover:text-black transition-all rounded-full px-6 normal-case font-semibold
+}
