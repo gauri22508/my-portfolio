@@ -3,10 +3,12 @@ const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: '*' 
+}));
 app.use(express.json());
 
 
@@ -15,7 +17,7 @@ app.use('/api', contactRoutes);
 
 
 app.get('/', (req, res) => {
-  res.send(' Server Running! Contact API Ready');
+  res.send('Server Running! Contact API Ready');
 });
 
 
@@ -24,5 +26,5 @@ app.use((req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(` Server running on http://localhost:${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
