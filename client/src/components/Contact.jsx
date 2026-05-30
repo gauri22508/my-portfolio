@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Button from './Button';
 import { Box, Container, Typography, TextField, Alert } from '@mui/material';
-import './Contact.css';
+import './ContactTemp.css';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
