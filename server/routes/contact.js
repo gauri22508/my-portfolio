@@ -1,10 +1,9 @@
-const express = require ('express');
+const express = require('express');
 const nodemailer = require('nodemailer');
 require('dotenv').config();
 
 const router = express.Router();
 
-// POST /api/contact
 router.post('/contact', async (req, res) => {
   console.log('Contact request received:', req.body);
   
@@ -15,11 +14,14 @@ router.post('/contact', async (req, res) => {
   }
 
   const transporter = nodemailer.createTransport({
-    service: 'gmail',
+    host: 'smtp.gmail.com',
+    port: 587,
+    secure: false,
     auth: {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASS
-    }
+    },
+    timeout: 10000
   });
 
   const mailOptions = {
@@ -31,11 +33,11 @@ router.post('/contact', async (req, res) => {
 
   try {
     await transporter.sendMail(mailOptions);
-    console.log(' Email sent!');
+    console.log('Email sent!');
     res.json({ success: true, message: 'Message sent!' });
   } catch (error) {
-    console.error(' Email error:', error);
-    res.status(500).json({ success: false, message: 'Error sending email' });
+    console.error('Email error:', error.message);
+    res.status(500).json({ success: false, message: 'Error sending email - ' + error.message });
   }
 });
 
